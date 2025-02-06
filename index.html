@@ -2,31 +2,37 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Fontsampler avec JavaScript</title>
-    <script src="./fontsampler.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontsampler - Test Complet</title>
+    <link rel="stylesheet" href="./fontsampler.css">
 </head>
 <body>
 
+    <h1>Test de la police Avalon</h1>
     <div id="my-fontsampler"></div>
+
+    <script src="./fontsampler.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            if (typeof Fontsampler === "undefined") {
+                console.error("Fontsampler.js ne s'est pas chargé !");
+                return;
+            }
+
+            // Test avec une police en ligne : Open Sans
             const fontsampler = new Fontsampler(document.getElementById("my-fontsampler"), {
                 fonts: [
-                { name: "Bauer Connect", files: ["./BauerConnect-Regular.woff2"] }
-            ],
+                    { name: "Open Sans", files: ["https://fonts.gstatic.com/s/opensans/v23/mem8YaGs126MiZpBA-UFUK0Udc1UAw.ttf"] }
+                ],
                 styles: ["font-size", "letter-spacing", "line-height"],
-                ui: {
-                    size: true,
-                    letterspacing: true,
-                    lineheight: true
-                }
+                ui: { size: true, letterspacing: true, lineheight: true }
             });
 
             fontsampler.inject();
+            console.log("Fontsampler est chargé !");
         });
     </script>
 
 </body>
 </html>
-
