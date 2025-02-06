@@ -13,6 +13,15 @@
     <h1>Test de la police Avalon</h1>
     <div id="my-fontsampler"></div>
 
+    <script>
+let node = document.getElementById("demo"),
+    fonts = [{
+        name: "Font name",
+        files: ["https://static1.squarespace.com/static/64c2144d059eb901240c67af/t/67a4c4a567cf074e7a29c20c/1738851493587/BauerConnect-Regular.woff2"]
+    }];
+new Fontsampler(node, fonts).init()
+</script>
+
     <script src="fontsampler.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
