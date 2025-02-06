@@ -4,59 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fontsampler - Test Complet</title>
+
     <link rel="stylesheet" href="fontsampler.css">
-    <link rel="stylesheet" href="fontsampler-demo.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .fontsampler-container {
-            max-width: 600px;
-            margin: auto;
-        }
-    </style>
+
 </head>
 <body>
 
-    <h1>Test complet de Fontsampler</h1>
-    <div class="fontsampler-container">
-        <div id="my-fontsampler"></div>
-    </div>
+    <h1>Test de la police Avalon</h1>
+    <div id="my-fontsampler"></div>
 
     <script src="fontsampler.min.js"></script>
-    <script src="fontsampler-demo.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                if (typeof Fontsampler === "undefined") {
-                    console.error("Fontsampler.js ne s'est pas chargé !");
-                    return;
+            if (typeof Fontsampler === "undefined") {
+                console.error("Fontsampler.js ne s'est pas chargé !");
+                return;
+            }
+
+            const fontsampler = new Fontsampler(document.getElementById("my-fontsampler"), {
+                fonts: [
+                    { name: "Avalon Regular", files: ["https://static1.squarespace.com/static/64c2144d059eb901240c67af/t/67a4c4a567cf074e7a29c20c/1738851493587/BauerConnect-Regular.woff2"] },
+                    { name: "Avalon Bold", files: ["https://static1.squarespace.com/static/64c2144d059eb901240c67af/t/67a4c4a567cf074e7a29c20c/1738851493587/BauerConnect-Regular.woff2"] }
+                ],
+                styles: [
+                    "font-size", 
+                    "letter-spacing", 
+                    "line-height", 
+                    "word-spacing",
+                    "alignment", 
+                    "color", 
+                    "background-color"
+                ],
+                features: [
+                    "liga", "kern", "calt", "onum", "tnum", 
+                    "lnum", "zero", "smcp", "c2sc", "frac"
+                ],
+                ui: {
+                    size: true,
+                    letterspacing: true,
+                    lineheight: true,
+                    wordspacing: true,
+                    alignment: true,
+                    color: true,
+                    backgroundcolor: true,
+                    opentype: true
                 }
+            });
 
-                // Configuration complète avec toutes les options
-                const fontsampler = new Fontsampler(document.getElementById("my-fontsampler"), {
-                    fonts: [
-                        { 
-                            name: "Input Mono", 
-                            files: ["https://static1.squarespace.com/static/64c2144d059eb901240c67af/t/67a4c4a567cf074e7a29c20c/1738851493587/BauerConnect-Regular.woff2"] 
-                        }
-                    ],
-                    styles: ["font-size", "letter-spacing", "line-height", "color"],
-                    features: ["liga", "kern", "calt", "onum", "tnum", "lnum", "zero"],
-                    ui: {
-                        size: true,
-                        letterspacing: true,
-                        lineheight: true,
-                        opentype: true,
-                        color: true
-                    }
-                });
-
-                fontsampler.inject();
-                console.log("Fontsampler est bien chargé !");
-            }, 500);
+            fontsampler.inject();
+            console.log("Fontsampler avec toutes les fonctionnalités est chargé !");
         });
     </script>
 
