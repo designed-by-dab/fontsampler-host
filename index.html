@@ -19,17 +19,19 @@
                 return;
             }
 
-            // Test avec une police en ligne : Open Sans
             const fontsampler = new Fontsampler(document.getElementById("my-fontsampler"), {
                 fonts: [
-                    { name: "Open Sans", files: ["https://fonts.gstatic.com/s/opensans/v23/mem8YaGs126MiZpBA-UFUK0Udc1UAw.ttf"] }
+                    { 
+                        name: "Open Sans", 
+                        files: ["https://fonts.gstatic.com/s/opensans/v23/mem8YaGs126MiZpBA-UFUK0Udc1UAw.woff2"]
+                    }
                 ],
                 styles: ["font-size", "letter-spacing", "line-height"],
                 ui: { size: true, letterspacing: true, lineheight: true }
             });
 
             fontsampler.inject();
-            console.log("Fontsampler est chargé !");
+            console.log("Fontsampler avec Open Sans est chargé !");
         });
     </script>
 
