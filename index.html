@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Fontsampler</title>
+</head>
+<body>
+    <h1>Fontsampler Test</h1>
+    <div id="my-fontsampler"></div>
+
+    <script src="fontsampler.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                if (typeof Fontsampler === "undefined") {
+                    console.error("Fontsampler.js ne s'est pas chargé !");
+                    return;
+                }
+
+                const fontsampler = new Fontsampler(document.getElementById("my-fontsampler"), {
+                    fonts: [
+                        { name: "Test Font", files: ["https://static1.squarespace.com/static/64c2144d059eb901240c67af/t/67a4c4a567cf074e7a29c20c/1738851493587/BauerConnect-Regular.woff2"] }
+                    ],
+                    styles: ["font-size", "letter-spacing", "line-height"],
+                    features: ["liga", "kern"]
+                });
+
+                fontsampler.inject();
+                console.log("Fontsampler est bien chargé !");
+            }, 500);
+        });
+    </script>
+</body>
+</html>
